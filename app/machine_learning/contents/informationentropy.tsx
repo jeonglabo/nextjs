@@ -34,7 +34,7 @@ export default function PageContent() {
         <InlineMath math="X" />
         &nbsp;に対して、
       </p>
-      <CenteredEquation equation="I(x) = -\log_b(P(X))" />
+      <CenteredEquation equation="I(X) = -\log_b(P(X))" />
       <p>
         このとき、対数の底&nbsp;
         <InlineMath math="b" />
@@ -84,7 +84,7 @@ export default function PageContent() {
         <InlineMath math="P(x_i)" />
         &nbsp;と&nbsp;情報量の値を合計したものとして計算されます。
       </p>
-      <CenteredEquation equation="H(X) = \sum_{i=1}^{n} P(x_i) (-\log_b(P(x_i)))" />
+      <CenteredEquation equation="H(X) = -\sum_{i=1}^{n} P(x_i) \log_b(P(x_i))" />
       <p>この式から情報エントロピーが得られます。</p>
       <p>この数式は対数エントロピーを表しています。</p>
       <p>結果は一貫しています。</p>

@@ -66,9 +66,11 @@ const Sidebar: React.FC = () => {
           <Link href="/policy">本サイトについて</Link>
           <br />
           <Link href="/contact">お問い合わせ</Link>
+          <br />
+          <Link href="/process">線形代数の進め方</Link>
         </p>
       </div>
-      {/*}
+      {/*
       <div className={styles.buttoncontainer}>
         <button
           className={styles.toggle}

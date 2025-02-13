@@ -1,0 +1,53 @@
+.topicsContainer {
+  margin-top: 2rem;
+}
+
+.topicSection {
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+}
+
+.difficultyLabel {
+  position: absolute;
+  top: -0.8rem;
+  left: 1rem;
+  padding: 0.2rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.easy {
+  background-color: #e7f5e7;
+  color: #2d5a27;
+}
+
+.intermediate {
+  background-color: #fff3e0;
+  color: #995d00;
+}
+
+.advanced {
+  background-color: #fde7e7;
+  color: #991f1f;
+}
+
+.topicSection details {
+  margin-top: 0.5rem;
+}
+
+.topicSection summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.topicSection ul {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.topicSection li {
+  margin: 0.5rem 0;
+}

@@ -61,25 +61,61 @@ export default function PageContent() {
       </p>
       <ol>
         <li>
-          <InlineMath math="\bm{v}_1" />
-          を正規化する。
-          <CenteredEquation equation="\bm{u}_1 = \frac{\bm{v}_1}{\|\bm{v}_1\|}" />
+          <InlineMath math="\bm{v}_1" /> を正規化して <InlineMath math="\bm{u}_1" /> を求めます。
+          <p>
+            まず、ベクトル
+            <InlineMath math="\bm{v}_1 = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}" /> の大きさは
+            <InlineMath math="\|\bm{v}_1\| = \sqrt{1^2+0^2+1^2} = \sqrt{2}" /> となり、
+            これにより正規化すると
+            <InlineMath math="\bm{u}_1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}" /> となります。
+          </p>
+          <CenteredEquation equation="\bm{u}_1 = \frac{\bm{v}_1}{\|\bm{v}_1\|} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}" />
         </li>
         <li>
-          <InlineMath math="\bm{v}_2" />
-          に対して、
-          <InlineMath math="\bm{v}_1" />
-          との直交成分を求め、正規化をする。
-          <CenteredEquation equation="\bm{u}_2 = \frac{\bm{v}_2 - (\bm{u}_1 \cdot \bm{v}_2)\bm{u}_1}{\|\bm{v}_2 - (\bm{u}_1 \cdot \bm{v}_2)\bm{u}_1\|}" />
+          <InlineMath math="\bm{v}_2" /> に対して、<br />
+          まず、
+          <InlineMath math="\bm{u}_1" /> と <InlineMath math="\bm{v}_2" /> の内積を計算します。
+          <p>
+            この内積は、与えられた計算結果として
+            <InlineMath math="\bm{u}_1 \cdot \bm{v}_2 = \frac{1}{\sqrt{2}}" /> と示されます。
+          </p>
+          <p>
+            次に、この内積を用いて、射影ベクトル
+            <InlineMath math="(\bm{u}_1 \cdot \bm{v}_2)\bm{u}_1" /> を求めます。
+            途中計算の結果は以下の通りです。
+          </p>
+          <CenteredEquation equation="(\bm{u}_1 \cdot \bm{v}_2)\bm{u}_1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 2 \\ -1 \end{bmatrix}" />
+          <p>
+            さらに、ベクトル <InlineMath math="\bm{v}_2" /> からこの射影ベクトルを引くと、その直交成分が得られ、
+            これを正規化することで <InlineMath math="\bm{u}_2" /> を求めることができます。
+          </p>
+          <CenteredEquation equation="\bm{u}_2 = \frac{\bm{v}_2 - (\bm{u}_1 \cdot \bm{v}_2)\bm{u}_1}{\|\bm{v}_2 - (\bm{u}_1 \cdot \bm{v}_2)\bm{u}_1\|} = \frac{1}{\sqrt{6}}\begin{bmatrix} 1 \\ 2 \\ -1 \end{bmatrix}" />
         </li>
         <li>
-          <InlineMath math="\bm{v}_3" />
-          に対して、
-          <InlineMath math="\bm{v}_1" />
-          と
-          <InlineMath math="\bm{v}_2" />
-          に直交する成分を求め、正規化をする。
-          <CenteredEquation equation="\bm{u}_3 = \frac{\bm{v}_3 - (\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1 - (\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2}{\|\bm{v}_3 - (\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1 - (\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2\|}" />
+          <InlineMath math="\bm{v}_3" /> に対して、<br />
+          まず、
+          <InlineMath math="\bm{u}_1" /> と <InlineMath math="\bm{v}_3" /> の内積を計算し、射影成分
+          <InlineMath math="(\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1" /> を求めます。
+          <p>
+            この途中計算の結果は以下の通りです。
+          </p>
+          <CenteredEquation equation="(\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1 = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}" />
+          次に、
+          <InlineMath math="\bm{u}_2" /> と <InlineMath math="\bm{v}_3" /> の内積を計算し、射影成分
+          <InlineMath math="(\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2" /> を求めます。
+          <p>
+            その途中計算は以下の通りです。
+          </p>
+          <CenteredEquation equation="(\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2 = \frac{1}{3}\begin{bmatrix} 1 \\ 2 \\ -1 \end{bmatrix}" />
+          <p>
+            これら2つの射影成分を <InlineMath math="\bm{v}_3" /> から差し引くと、直交成分が得られます。
+            途中式は以下のように表現できます。
+          </p>
+          <CenteredEquation equation="\bm{v}_3 - (\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1 - (\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2" />
+          <p>
+            この直交成分を正規化することで、最終的に <InlineMath math="\bm{u}_3" /> を求めます。
+          </p>
+          <CenteredEquation equation="\bm{u}_3 = \frac{\bm{v}_3 - (\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1 - (\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2}{\|\bm{v}_3 - (\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1 - (\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2\|} = \frac{1}{\sqrt{3}}\begin{bmatrix} -1 \\ 1 \\ 1 \end{bmatrix}" />
         </li>
       </ol>
       <p>
@@ -121,7 +157,7 @@ export default function PageContent() {
         です。
         <br />
         緑のベクトルは
-        <InlineMath math="\bm{v}_2" />を<InlineMath math="\bm{v}_1" />
+        <InlineMath math="\bm{v}_2" /> を <InlineMath math="\bm{v}_1" />
         に射影したベクトルです。式で表すと以下の通りです。
       </p>
       <CenteredEquation equation="(\bm{u}_1\cdot\bm{v}_2)\bm{u}_1" />
@@ -165,45 +201,59 @@ export default function PageContent() {
 
       <ol>
         <li>
-          <InlineMath math="\bm{v}_1" />
-          を正規化して
-          <InlineMath math="\bm{u}_1" />
-          を求めます。
+          <InlineMath math="\bm{v}_1" /> を正規化して <InlineMath math="\bm{u}_1" /> を求めます。
+          <p>
+            まず、ベクトル
+            <InlineMath math="\bm{v}_1 = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}" /> の大きさは
+            <InlineMath math="\|\bm{v}_1\| = \sqrt{1^2+0^2+1^2} = \sqrt{2}" /> となり、
+            これにより正規化すると
+            <InlineMath math="\bm{u}_1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}" /> となります。
+          </p>
           <CenteredEquation equation="\bm{u}_1 = \frac{\bm{v}_1}{\|\bm{v}_1\|} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}" />
         </li>
         <li>
-          <InlineMath math="\bm{v}_2" />
-          に対して、
-          <InlineMath math="\bm{v}_1" />
-          との直交成分を求め、正規化して
-          <InlineMath math="\bm{u}_2" />
-          を求めます。
-          <br />
-          <br />
-          ここで、
+          <InlineMath math="\bm{v}_2" /> に対して、
+          <InlineMath math="\bm{v}_1" /> との直交成分を求め、正規化して <InlineMath math="\bm{u}_2" /> を求めます。
+          <p>
+            まず、<InlineMath math="\bm{u}_1" /> と <InlineMath math="\bm{v}_2" /> の内積を計算すると、
+            <InlineMath math="\bm{u}_1 \cdot \bm{v}_2 = \frac{1}{\sqrt{2}}" /> となります。（与えられた計算結果を用いています。）
+          </p>
+          <p>
+            この内積を用いて、射影ベクトル
+            <InlineMath math="(\bm{u}_1 \cdot \bm{v}_2)\bm{u}_1" /> を求めると、
+            途中式として以下の結果が得られます。
+          </p>
           <CenteredEquation equation="(\bm{u}_1 \cdot \bm{v}_2)\bm{u}_1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 2 \\ -1 \end{bmatrix}" />
-          となるので、
+          <p>
+            次に、ベクトル <InlineMath math="\bm{v}_2" /> からこの射影ベクトルを引くことで直交成分が得られ、
+            その直交成分を正規化すると
+            <InlineMath math="\bm{u}_2 = \frac{1}{\sqrt{6}}\begin{bmatrix} 1 \\ 2 \\ -1 \end{bmatrix}" /> となります。
+          </p>
           <CenteredEquation equation="\bm{u}_2 = \frac{\bm{v}_2 - (\bm{u}_1 \cdot \bm{v}_2)\bm{u}_1}{\|\bm{v}_2 - (\bm{u}_1 \cdot \bm{v}_2)\bm{u}_1\|} = \frac{1}{\sqrt{6}}\begin{bmatrix} 1 \\ 2 \\ -1 \end{bmatrix}" />
-          となります。
         </li>
         <li>
-          <InlineMath math="\bm{v}_3" />
-          に対して、
-          <InlineMath math="\bm{v}_1" />
-          と
-          <InlineMath math="\bm{v}_2" />
-          に直交する成分を求め、正規化して
-          <InlineMath math="\bm{u}_3" />
-          を求めます。
-          <br />
-          <br />
-          ここで、
+          <InlineMath math="\bm{v}_3" /> に対して、
+          <InlineMath math="\bm{v}_1" /> と <InlineMath math="\bm{v}_2" /> に直交する成分を求め、正規化して <InlineMath math="\bm{u}_3" /> を求めます。
+          <p>
+            まず、<InlineMath math="\bm{u}_1" /> と <InlineMath math="\bm{v}_3" /> の内積を計算し、その射影成分として
+            <InlineMath math="(\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1" /> を求めると、以下の結果が得られます。
+          </p>
           <CenteredEquation equation="(\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1 = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}" />
-          および
+          <p>
+            次に、<InlineMath math="\bm{u}_2" /> と <InlineMath math="\bm{v}_3" /> の内積を計算し、その射影成分
+            <InlineMath math="(\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2" /> を求めると、以下の結果が得られます。
+          </p>
           <CenteredEquation equation="(\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2 = \frac{1}{3}\begin{bmatrix} 1 \\ 2 \\ -1 \end{bmatrix}" />
-          となるので、
+          <p>
+            これら2つの射影成分をベクトル <InlineMath math="\bm{v}_3" /> から差し引くと直交成分が得られ、
+            その途中式は次のように表されます。
+          </p>
+          <CenteredEquation equation="\bm{v}_3 - (\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1 - (\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2" />
+          <p>
+            この直交成分を正規化することで、最終的に
+            <InlineMath math="\bm{u}_3 = \frac{1}{\sqrt{3}}\begin{bmatrix} -1 \\ 1 \\ 1 \end{bmatrix}" /> が得られます。
+          </p>
           <CenteredEquation equation="\bm{u}_3 = \frac{\bm{v}_3 - (\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1 - (\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2}{\|\bm{v}_3 - (\bm{u}_1 \cdot \bm{v}_3)\bm{u}_1 - (\bm{u}_2 \cdot \bm{v}_3)\bm{u}_2\|} = \frac{1}{\sqrt{3}}\begin{bmatrix} -1 \\ 1 \\ 1 \end{bmatrix}" />
-          となります。
         </li>
       </ol>
       <h3>結果</h3>

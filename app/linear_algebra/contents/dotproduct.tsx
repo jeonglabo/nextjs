@@ -194,6 +194,36 @@ export default function PageContent() {
         <InlineMath math="\bm{b}" />
         &nbsp;のノルムの積を意味します。
       </p>
+
+      {/* 新たに追加された図とその説明文 */}
+      <h3>図による解説 (内積の視覚化)</h3>
+      <p>
+        下の図は、赤色のベクトル&nbsp;
+        <InlineMath math="\bm{a}" />
+        と青色のベクトル
+        <InlineMath math="\bm{b}" />
+        を示しており、両ベクトルのなす角&nbsp;
+        <InlineMath math="\theta" />
+        が明示されています。
+        <br />
+        また、緑のベクトルはベクトル&nbsp;
+        <InlineMath math="\bm{b}" />
+        &nbsp;をベクトル&nbsp;
+        <InlineMath math="\bm{a}" />
+        &nbsp;に射影したものです。式で表すと&nbsp;
+        <InlineMath math="\|\bm{b}\|\cos{\theta}" />
+        となります。
+        <br />
+        このベクトル（緑の射影ベクトル）の長さと、ベクトル&nbsp;
+        <InlineMath math="\bm{a}" />
+        &nbsp;の大きさを掛けたものが内積になります。
+      </p>
+      <CenteredEquation equation="\bm{a}\cdot\bm{b} = \|\bm{a}\|\|\bm{b}\|\cos{\theta}" />
+      <ImageModal
+        imagePath={`${imagePath}/dot_angle.png`}
+        altText="内積の視覚化: ベクトルと角度θ"
+      />
+      <br />
       <br />
     </>
   );

@@ -7,7 +7,7 @@ export const metadata: MetadataCollection = {
     tabtitle: `オートエンコーダ - ${siteTitle}`,
     description:
       "オートエンコーダは、入力データを効率的に圧縮し再構成する自己教師あり学習モデルです。",
-    lastUpdated: "2025-01-09",
+    lastUpdated: "2025-02-13",
     topic: "machine_learning",
     keywords: ["オートエンコーダ", "次元削減", "再構成", "ディープラーニング"],
   },
@@ -44,7 +44,7 @@ export const metadata: MetadataCollection = {
     tabtitle: `情報エントロピー - ${siteTitle}`,
     description:
       "情報エントロピーは、情報の不確実性やランダム性を測定する概念です。",
-    lastUpdated: "2025-01-09",
+    lastUpdated: "2025-02-14",
     topic: "machine_learning",
     keywords: [
       "情報エントロピー",
@@ -172,7 +172,7 @@ export const metadata: MetadataCollection = {
     tabtitle: `決定木 - ${siteTitle}`,
     description:
       "決定木は、データの特徴に基づいて判断を行う階層的な分類および回帰モデルです。",
-    lastUpdated: "2025-01-24",
+    lastUpdated: "2025-02-14",
     topic: "machine_learning",
     keywords: ["決定木", "分類", "回帰", "アルゴリズム", "機械学習"],
   },
@@ -197,7 +197,7 @@ export const metadata: MetadataCollection = {
     tabtitle: `ランダムフォレスト - ${siteTitle}`,
     description:
       "複数の決定木を組み合わせた強力なアンサンブル学習手法について学びます。",
-    lastUpdated: "2025-01-28",
+    lastUpdated: "2025-02-14",
     topic: "machine_learning",
     keywords: ["ランダムフォレスト", "アンサンブル学習", "決定木", "機械学習"],
   },

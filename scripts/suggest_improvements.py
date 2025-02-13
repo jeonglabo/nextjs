@@ -16,7 +16,7 @@ load_dotenv(".env.local")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 SPREADSHEET_URL = os.getenv("SPREADSHEET_URL")
 
-if not OPENAI_API_KEY :
+if not OPENAI_API_KEY:
     raise ValueError(
         "OPENAI_API_KEYが認証できません。.env.localファイルを確認してください。"
     )
@@ -28,6 +28,7 @@ elif not SPREADSHEET_URL:
 # OpenAI API クライアントの初期化
 client = openai.Client(api_key=OPENAI_API_KEY)
 
+
 def load_and_process_spreadsheet(url):
     """Googleスプレッドシートからデータを取得し、不要な行や列を削除する"""
     try:
@@ -35,7 +36,16 @@ def load_and_process_spreadsheet(url):
         df = dfs[0]
 
         # 列名を設定
-        df.columns = ["No", "Timestamp", "Name", "Mail", "Comments", "Path", "Flag"]
+        df.columns = [
+            "No",
+            "Timestamp",
+            "Name",
+            "Mail",
+            "Comments",
+            "Path",
+            "Flag",
+            "display",
+        ]
 
         # 不要な行（ヘッダー情報等）を削除
         df = df.drop([0, 1, 2])

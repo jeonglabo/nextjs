@@ -54,6 +54,7 @@ h2.caption {
   color: #ffffff;
   padding: 15px 25px;
   font-size: 28px;
+  margin-top: 5%;
 }
 
 h2.commentform {
@@ -173,6 +174,7 @@ p.link_list {
   border-radius: 0 0 8px 8px;
   margin: 0;
   padding: 20px;
+  line-height: 2;
 }
 
 input.commentform,

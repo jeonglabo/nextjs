@@ -34,12 +34,13 @@ export default function Page() {
         <h1 className="title">本サイトについて</h1>
       </div>
 
-      <div className="lastUpdated">最終更新日: 2025/01/22</div>
+      <div className="lastUpdated">最終更新日: 2025/02/13</div>
 
       <h2 className="caption">掲載内容について</h2>
       <p>
         本サイトは、機械学習、データ分析、プログラミング、数学、物理学などの技術に関する情報を提供する目的で運営しています。
       </p>
+      <p>本サイトは、生成AIを使用して内容を作成しています。</p>
       <p>
         また、本サイトは投稿されたコメントをAIで学習し、定期的に内容を更新します（現在開発中）。
       </p>

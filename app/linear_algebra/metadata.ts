@@ -7,7 +7,7 @@ export const metadata: MetadataCollection = {
     tabtitle: `内積とは - ${siteTitle}`,
     description:
       "内積の定義や計算方法、幾何学的な意味合いおよび応用について詳しく説明しています。",
-    lastUpdated: "2025-01-09",
+    lastUpdated: "2025-02-14",
     topic: "linear_algebra",
     keywords: ["内積", "スカラー積", "ドット積", "ベクトル演算"],
   },
@@ -178,7 +178,7 @@ export const metadata: MetadataCollection = {
     tabtitle: `グラム・シュミットの直交化法 - ${siteTitle}`,
     description:
       "グラム・シュミットの直交化法のアルゴリズム、理論、およびベクトル空間での応用について解説しています。",
-    lastUpdated: "2024-12-28",
+    lastUpdated: "2025-02-14",
     topic: "linear_algebra",
     keywords: ["グラム・シュミット法", "直交化", "正規直交基底", "内積空間"],
   },
