@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { metadata } from "@/app/allmetadata";
 import CustomLink from "@/app/components/CustomLink";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 function SearchResults() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
@@ -34,7 +36,7 @@ function SearchResults() {
             <div key={index} className="border p-4 rounded-lg">
               <CustomLink
                 href={`/${result.topic}/${result.path}`}
-                imageUrl={`/${result.topic}/${result.path}/thumb.png`}
+                imageUrl={`${basePath}/${result.topic}/${result.path}/thumb.png`}
                 altText={`${result.title}のサムネイル`}
                 siteName={result.title}
                 description={result.description}
