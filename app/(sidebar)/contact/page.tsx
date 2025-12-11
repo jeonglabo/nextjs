@@ -3,12 +3,6 @@ import GoogleForm from "@/app/components/GoogleForm";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-interface PageProps {
-  params: Promise<{
-    slug: string;
-  }>;
-}
-
 export const metadata = {
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
 
@@ -17,7 +11,7 @@ export const metadata = {
   openGraph: {
     title: `お問い合わせについて - ${siteTitle}`,
     description: "お問い合わせについての概要が書かれています。",
-    url: "https://jeonglabo.github.io/nextjs/policy",
+    url: "https://jeonglabo.github.io/nextjs/contact",
     images: [
       {
         url: `${basePath}/icon.png`,
@@ -33,9 +27,7 @@ export const metadata = {
   },
 };
 
-export default async function Page(props: PageProps) {
-  const params = await props.params;
-
+export default function Page() {
   return (
     <>
       <div style={{ marginTop: "2rem" }}>
@@ -61,7 +53,7 @@ export default async function Page(props: PageProps) {
       <div style={{ margin: "5px" }}>
         <h2 className="commentform">コメントフォーム</h2>
         <div style={{ margin: "0px 10px" }}>
-          <GoogleForm currentPath={`/${params.slug}`} underComment={false} />
+          <GoogleForm currentPath="/contact" underComment={false} />
         </div>
       </div>
     </>

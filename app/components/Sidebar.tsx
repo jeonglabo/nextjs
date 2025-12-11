@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-//import styles from "@/app/components/chatbot.module.css";
+import styles from "@/app/components/chatbot.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-//import ChatBot from "@/app/components/Rag";
+import ChatBot from "@/app/components/Rag";
 
 const Sidebar: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
-  //const [showChat, setShowChat] = useState(false);
+  const [showChat, setShowChat] = useState(false);
   const router = useRouter();
 
   const handleSearch = () => {
@@ -70,7 +70,7 @@ const Sidebar: React.FC = () => {
           <Link href="/process">線形代数の進め方</Link>
         </p>
       </div>
-      {/*
+
       <div className={styles.buttoncontainer}>
         <button
           className={styles.toggle}
@@ -79,7 +79,7 @@ const Sidebar: React.FC = () => {
           💬 チャットアシスタント
         </button>
       </div>
-      {showChat && <ChatBot />}*/}
+      {showChat && <ChatBot onClose={() => setShowChat(false)} />}
     </div>
   );
 };

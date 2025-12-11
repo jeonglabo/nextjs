@@ -1,5 +1,6 @@
 // app/machine_learning/[slug]/page.tsx
 import { notFound } from "next/navigation";
+import type { ComponentType } from "react";
 import Breadcrumb from "@/app/components/Breadcrumb";
 import { metadata as MachineLearningMetadata } from "@/app/machine_learning/metadata";
 import GoogleForm from "@/app/components/GoogleForm";
@@ -12,9 +13,9 @@ import fs from "fs";
 import path from "path";
 
 interface PageProps {
-  params: Promise<{
+  params: {
     slug: string;
-  }>;
+  };
 }
 
 // 静的に生成するパスのパラメータを定義
@@ -28,8 +29,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata(props: PageProps) {
-  const params = await props.params;
+export async function generateMetadata({ params }: PageProps) {
   const metaData = MachineLearningMetadata[params.slug];
 
   if (!metaData) {
@@ -66,14 +66,24 @@ export async function generateMetadata(props: PageProps) {
 
 // ページコンポーネントの動的インポート例
 export default async function Page(props: PageProps) {
-  const params = await props.params;
+  const { params } = props;
   const { slug } = params;
-  const ContentComponent = (await import(`../contents/${slug}`))?.default;
-  const metaData = MachineLearningMetadata[params.slug];
+  const metaData = MachineLearningMetadata[slug];
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+  if (!metaData) {
+    return notFound();
+  }
+
+  let ContentComponent: ComponentType | undefined;
+  try {
+    ContentComponent = (await import(`../contents/${slug}`))?.default;
+  } catch {
+    return notFound();
+  }
+
   if (!ContentComponent) {
-    notFound();
+    return notFound();
   }
 
   return (

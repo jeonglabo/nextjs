@@ -1,37 +1,61 @@
 // api.ts
-const API_URL = "https://api.openai.com/v1/chat/completions";
-const API_KEY = process.env.OPENAI_API_KEY; // .envファイルから読み込み
-
-if (!API_KEY) {
-  throw new Error(
-    "API_KEY is not defined. Please set REACT_APP_API_KEY in your .env file."
-  );
-}
+// Google AI Studio (Gemini) を利用したチャット呼び出し
+const GEMINI_MODEL = "gemini-2.5-flash";
+const GEMINI_CHAT_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 // API呼び出し関数
 export const sendChatMessage = async (message: string): Promise<string> => {
+  const apiKey = process.env.GOOGLE_API_KEY;
+
+  if (!apiKey) {
+    throw new Error(
+      "GOOGLE_API_KEY が設定されていません。環境変数を確認してください。"
+    );
+  }
+
   try {
-    const response = await fetch(API_URL, {
+    const response = await fetch(`${GEMINI_CHAT_URL}?key=${apiKey}`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
+        systemInstruction: {
+          parts: [
+            {
+              text: "あなたは工学系の専門家です。以下の質問に簡潔に答えてください。なるべく2文以内でお願いします。",
+            },
+          ],
+        },
+        contents: [
           {
-            role: "system",
-            content:
-              "あなたは工学系の専門家です。以下の質問に簡潔に答えてください。なるべく2文以内でお願いします。",
+            role: "user",
+            parts: [{ text: message }],
           },
-          { role: "user", content: message },
         ],
+        generationConfig: {
+          temperature: 0.3,
+        },
       }),
     });
 
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Gemini API エラー: ${response.status} - ${errorText}`);
+    }
+
     const data = await response.json();
-    return data.choices[0].message.content;
+    const content =
+      data?.candidates?.[0]?.content?.parts
+        ?.map((part: { text?: string }) => part.text ?? "")
+        .join("")
+        .trim() ?? "";
+
+    if (!content) {
+      throw new Error("Gemini API の応答形式が想定外です。");
+    }
+
+    return content;
   } catch (error) {
     console.error("Error fetching API:", error);
     throw new Error("Failed to fetch API response");
