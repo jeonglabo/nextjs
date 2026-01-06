@@ -13,9 +13,9 @@ import fs from "fs";
 import path from "path";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // 静的に生成するパスのパラメータを定義
@@ -30,7 +30,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const metaData = linearAlgebraMetadata[params.slug];
+  const { slug } = await params;
+  const metaData = linearAlgebraMetadata[slug];
 
   if (!metaData) {
     return {
@@ -47,10 +48,10 @@ export async function generateMetadata({ params }: PageProps) {
     openGraph: {
       title: metaData.tabtitle,
       description: metaData.description,
-      url: `${baseUrl}/linear_algebra/${params.slug}`,
+      url: `${baseUrl}/linear_algebra/${slug}`,
       images: [
         {
-          url: `${baseUrl}/linear_algebra/${params.slug}/thumb.png`,
+          url: `${baseUrl}/linear_algebra/${slug}/thumb.png`,
           alt: metaData.description,
         },
       ],
@@ -59,7 +60,7 @@ export async function generateMetadata({ params }: PageProps) {
       card: "summary_large_image",
       title: metaData.tabtitle,
       description: metaData.description,
-      images: [`${baseUrl}/linear_algebra/${params.slug}/thumb.png`],
+      images: [`${baseUrl}/linear_algebra/${slug}/thumb.png`],
     },
   };
 }
@@ -67,7 +68,7 @@ export async function generateMetadata({ params }: PageProps) {
 // ページコンポーネントの動的インポート例
 export default async function Page(props: PageProps) {
   const { params } = props;
-  const { slug } = params;
+  const { slug } = await params;
   const metaData = linearAlgebraMetadata[slug];
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -94,13 +95,13 @@ export default async function Page(props: PageProps) {
             { name: "線形代数", href: `/${metaData.topic}` },
             {
               name: metaData.title,
-              href: `/${metaData.topic}/${params.slug}`,
+              href: `/${metaData.topic}/${slug}`,
             },
           ]}
         />
 
         <Image
-          src={`${basePath}/${metaData.topic}/${params.slug}/thumb.png`}
+          src={`${basePath}/${metaData.topic}/${slug}/thumb.png`}
           alt={metaData.title}
           width={100}
           height={50}
@@ -123,7 +124,7 @@ export default async function Page(props: PageProps) {
           <h2 className="commentform">コメントフォーム</h2>
           <div style={{ margin: "0px 10px" }}>
             <GoogleForm
-              currentPath={`/linear_algebra/${params.slug}`}
+              currentPath={`/linear_algebra/${slug}`}
               underComment={true}
             />
           </div>
