@@ -1,0 +1,16 @@
+{
+  "mode": "expert_replace",
+  "generatedAt": "2026-01-08T03:01:18Z",
+  "sourceComments": [
+    "c001",
+    "c002",
+    "c003",
+    "c004",
+    "c005"
+  ],
+  "meta": {
+    "engineVersion": "0.1-replace-auto",
+    "note": "auto select + rewrite"
+  },
+  "patches": []
+}

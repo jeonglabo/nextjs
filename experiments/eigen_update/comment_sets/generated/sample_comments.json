@@ -1,0 +1,47 @@
+[
+  {
+    "id": "c001",
+    "targetPage": "eigen_solve",
+    "category": "beginner_question",
+    "level": "beginner",
+    "difficulty": 1,
+    "comment": "線形変換 A に対して A x = λ x が成り立つ意味がまだ曖昧です。固有値・固有ベクトルの定義をもう一度整理し、図形変換の観点で説明してもらえますか？",
+    "expected_gap": "定義と幾何的イメージの対応が弱い"
+  },
+  {
+    "id": "c002",
+    "targetPage": "eigen_solve",
+    "category": "misconception",
+    "level": "beginner",
+    "difficulty": 2,
+    "comment": "固有方程式 det(A − λI)=0 が出てくるので、固有値と行列式が同じ意味に見えます。トレースや行列式との関係（和と積）を使って違いを説明できますか？",
+    "expected_gap": "行列式・トレースと固有値の関係整理が不足"
+  },
+  {
+    "id": "c003",
+    "targetPage": "eigen_property",
+    "category": "property_deepdive",
+    "level": "intermediate",
+    "difficulty": 3,
+    "comment": "実対称行列の固有値が実数になる理由と、直交対角化 A=QΛQ^T の流れを簡潔にまとめてほしいです。レイリー商や直交性の話も触れてください。",
+    "expected_gap": "実数性と直交対角化の根拠整理が不足"
+  },
+  {
+    "id": "c004",
+    "targetPage": "eigen_solve",
+    "category": "procedure_stuck",
+    "level": "intermediate",
+    "difficulty": 3,
+    "comment": "3×3 の特性方程式 det(A−λI)=0 を展開すると符号や次数でミスします。余因子展開の注意点と、トレース・行列式を使った検算方法を教えてください。",
+    "expected_gap": "展開手順と検算の具体的ポイントが不足"
+  },
+  {
+    "id": "c005",
+    "targetPage": "eigen_property",
+    "category": "expert_probe",
+    "level": "advanced",
+    "difficulty": 4,
+    "comment": "固有値が重複する場合の対角化条件（代数的重複度と幾何的重複度）を整理したいです。ジョルダン標準形が必要になる典型例も示してください。",
+    "expected_gap": "対角化可否の条件整理と反例が不足"
+  }
+]

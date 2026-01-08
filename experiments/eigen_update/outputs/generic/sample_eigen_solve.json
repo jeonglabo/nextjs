@@ -1,0 +1,35 @@
+{
+  "mode": "generic",
+  "generatedAt": "2025-02-14T09:00:00Z",
+  "sourceComments": ["c001", "c002", "c004"],
+  "meta": {
+    "engineVersion": "0.1-generic-template",
+    "note": "sample run for eigen_solve"
+  },
+  "patches": [
+    {
+      "id": "patch-c001",
+      "targetPage": "eigen_solve",
+      "targetSectionId": "definition",
+      "operation": "insert",
+      "content": "【直感メモ】固有値は「行列がその方向にどれだけ伸縮するか」を表し、固有ベクトルは「伸縮しても方向が変わらない軸」です。例えばばねの伸び縮みの倍率を固有値、ばねの方向を固有ベクトルとみなすとイメージしやすいです。",
+      "rationale": "定義と幾何的イメージの橋渡しを追加し、初学者の直感を補強する."
+    },
+    {
+      "id": "patch-c002",
+      "targetPage": "eigen_solve",
+      "targetSectionId": "definition",
+      "operation": "insert",
+      "content": "【注意】行列式は行列全体の体積倍率を 1 つの値で表します。一方、固有値は「方向ごとの倍率」の一覧です。特性方程式に行列式が現れるのは、複数の固有値の積が行列式に一致するためであり、同じ量を指しているわけではありません。",
+      "rationale": "行列式と固有値を混同する誤解を解消する."
+    },
+    {
+      "id": "patch-c004",
+      "targetPage": "eigen_solve",
+      "targetSectionId": "char_poly",
+      "operation": "insert",
+      "content": "【計算チェックリスト（3×3 の例）】\n- まず対角成分を (a−λ)(d−λ)(f−λ) の形でまとめる。\n- 余因子展開を行う前に符号の並びをメモ（+−+ のパターン）。\n- 展開後は λ の次数ごとに項をグルーピングしてから整理する。\n- 定数項が det(A) に一致するかを最後に確認する。",
+      "rationale": "特性方程式展開時の符号ミスを防ぐ検算ポイントを追加."
+    }
+  ]
+}

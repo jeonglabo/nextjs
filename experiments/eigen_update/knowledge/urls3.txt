@@ -1,0 +1,31 @@
+# 参照したい URL を 1 行 1 URL で列挙してください。
+# 例:
+# https://example.com/eigenvalues-intro
+
+https://www.geeksforgeeks.org/engineering-mathematics/eigen-values/
+https://textbooks.math.gatech.edu/ila/eigenvectors.html
+https://math.hmc.edu/calculus/hmc-mathematics-calculus-online-tutorials/linear-algebra/eigenvalues-and-eigenvectors/
+https://math.libretexts.org/Courses/Irvine_Valley_College/Math_26%3A_Introduction_to_Linear_Algebra/03%3A_Eigenvalues_and_Eigenvectors/3.01%3A_Eigenvalues_and_Eigenvectors_Definitions
+https://ocw.mit.edu/courses/res-18-009-learn-differential-equations-up-close-with-gilbert-strang-and-cleve-moler-fall-2015/pages/differential-equations-and-linear-algebra/eigenvalues-and-eigenvectors/
+https://mathresearch.utsa.edu/wiki/index.php?title=Eigenvalues_and_Eigenvectors
+https://people.math.sc.edu/vasquezp/Math344/EigenvaluesEigenvectors/html/section-1.html
+https://math.libretexts.org/Bookshelves/Linear_Algebra/Interactive_Linear_Algebra_%28Margalit_and_Rabinoff%29/05%3A_Eigenvalues_and_Eigenvectors/5.01%3A_Eigenvalues_and_Eigenvectors
+https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-21-eigenvalues-and-eigenvectors/
+https://math.colorado.edu/~jonathan.wise/ula/sec-eigen-intro.html
+https://understandinglinearalgebra.org/sec-eigen-intro.html
+https://textbooks.math.gatech.edu/ila/chap-eigenvalues.html
+https://textbooks.math.gatech.edu/ila/eigenvectors.html
+https://math.libretexts.org/Bookshelves/Linear_Algebra/Linear_Algebra_(Hefferon)/06%3A_Eigenvalues
+https://math.libretexts.org/Bookshelves/Linear_Algebra/Interactive_Linear_Algebra_(Margalit_and_Rabinoff)/05%3A_Eigenvalues_and_Eigenvectors
+https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/pages/least-squares-determinants-and-eigenvalues/
+https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/least-squares-determinants-and-eigenvalues/eigenvalues-and-eigenvectors/
+https://people.math.harvard.edu/~knill/teaching/math21b2004/exhibits/eigenvalues/index.html
+https://www.khanacademy.org/math/linear-algebra/alternate-bases/eigen-everything
+https://mathworld.wolfram.com/Eigenvalue.html
+https://brilliant.org/wiki/eigenvalues-and-eigenvectors/
+https://tutorial.math.lamar.edu/classes/DE/Eigenvalues.aspx
+https://tutorial.math.lamar.edu/classes/LA/Eigenvalues.aspx
+https://www.statlect.com/matrix-algebra/eigenvalues
+https://www.cs.princeton.edu/courses/archive/fall18/cos302/lectures/eigenvalues
+https://www.math.utah.edu/~gustafso/s2015/2270/notes/eigenvalues.html
+https://www.math.umd.edu/~immortal/MATH240/eigenvalues.html

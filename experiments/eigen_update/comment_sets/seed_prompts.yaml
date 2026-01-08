@@ -1,0 +1,45 @@
+# カテゴリ別の生成プロンプト種（雛形）。LLM 呼び出し時に動的に組み立てる前提。
+# level: beginner / intermediate / advanced
+# difficulty: 1 (易) 〜 5 (難)
+
+- category: beginner_question
+  level: beginner
+  difficulty: 1
+  prompt: |
+    固有値と固有ベクトルの役割を直感的に尋ねる素朴な質問を作ってください。
+    定義の言い換えを求め、日常的な比喩を含めるが、長さは200字以内。
+
+- category: misconception
+  level: beginner
+  difficulty: 2
+  prompt: |
+    固有値と行列式を混同した誤解を含む質問を作ってください。
+    誤解点を1つだけ入れ、計算例を挙げるよう促す。150〜250字。
+
+- category: property_deepdive
+  level: intermediate
+  difficulty: 3
+  prompt: |
+    対称行列の固有値の実数性や直交対角化について、証明のスケッチを要求する質問を作成。
+    必要ならスペクトル定理に言及。200〜300字。
+
+- category: example_request
+  level: beginner
+  difficulty: 2
+  prompt: |
+    2x2 行列の具体的な固有値計算と、固有ベクトルの図的イメージを求める質問。
+    図がなくてもイメージできる表現を求める。150〜220字。
+
+- category: procedure_stuck
+  level: intermediate
+  difficulty: 3
+  prompt: |
+    特性方程式の解法で詰まっている質問を作成。
+    係数の展開ミスを自覚しているが原因が分からない、という文脈を含める。180〜250字。
+
+- category: expert_probe
+  level: advanced
+  difficulty: 4
+  prompt: |
+    非正規行列の対角化可能性や、ジョルダン標準形との関係を突っ込む質問を作る。
+    端的だが専門用語を交え、200〜300字。

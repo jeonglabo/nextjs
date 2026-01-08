@@ -49,3 +49,5 @@ next-env.d.ts
 config.py
 __pycache__/
 *.pyc
+
+documents

@@ -1,0 +1,67 @@
+{
+  "mode": "generic",
+  "generatedAt": "2026-01-07T14:01:46Z",
+  "sourceComments": [
+    "c001",
+    "c002",
+    "c003",
+    "c004",
+    "c005"
+  ],
+  "meta": {
+    "engineVersion": "0.1-generic-template-py",
+    "note": "python pipeline run"
+  },
+  "patches": [
+    {
+      "id": "patch-c001",
+      "targetPage": "eigen_solve",
+      "targetSectionId": "definition",
+      "operation": "insert",
+      "content": "【直感メモ】固有値は「行列がその方向にどれだけ伸縮するか」を表し、固有ベクトルは「伸縮しても方向が変わらない軸」です。例えばばねの伸び縮みの倍率を固有値、ばねの方向を固有ベクトルとみなすとイメージしやすいです。",
+      "rationale": "定義と幾何的イメージの橋渡しを追加し、初学者の直感を補強する。",
+      "citations": [],
+      "retrievalLog": []
+    },
+    {
+      "id": "patch-c002",
+      "targetPage": "eigen_solve",
+      "targetSectionId": "definition",
+      "operation": "insert",
+      "content": "【注意】行列式は行列全体の体積倍率を 1 つの値で表します。一方、固有値は「方向ごとの倍率」の一覧です。特性方程式に行列式が現れるのは、複数の固有値の積が行列式に一致するためであり、同じ量を指しているわけではありません。",
+      "rationale": "行列式と固有値を混同する誤解を解消する。",
+      "citations": [],
+      "retrievalLog": []
+    },
+    {
+      "id": "patch-c003",
+      "targetPage": "eigen_property",
+      "targetSectionId": "spectral_overview",
+      "operation": "insert",
+      "content": "【対称行列の実数性のスケッチ】対称行列 A に対して任意の実ベクトル x で x^T A x は実数になり、レイリー商の極値が固有値に一致するため、固有値は実数になる。さらに固有ベクトル同士を直交化できるので、直交行列 Q により A = Q Λ Q^T と対角化できる。",
+      "rationale": "スペクトル定理の核心だけを短く提示し、実数性と直交対角化の流れを補う。",
+      "citations": [],
+      "retrievalLog": []
+    },
+    {
+      "id": "patch-c004",
+      "targetPage": "eigen_solve",
+      "targetSectionId": "char_poly",
+      "operation": "insert",
+      "content": "【計算チェックリスト（3×3 の例）】\n- まず対角成分を (a−λ)(d−λ)(f−λ) の形でまとめる。\n- 余因子展開を行う前に符号の並びをメモ（+−+ のパターン）。\n- 展開後は λ の次数ごとに項をグルーピングしてから整理する。\n- 定数項が det(A) に一致するかを最後に確認する。",
+      "rationale": "特性方程式展開時の符号ミスを防ぐ検算ポイントを追加。",
+      "citations": [],
+      "retrievalLog": []
+    },
+    {
+      "id": "patch-c005",
+      "targetPage": "eigen_property",
+      "targetSectionId": "diagonalization_condition",
+      "operation": "insert",
+      "content": "【対角化可能性の整理】非正規行列でも固有値が重複しない場合は対角化できることが多いが、欠損する場合はジョルダン標準形が必要になる。例: \\(\\begin{pmatrix}1 & 1 \\\\ 0 & 1\\end{pmatrix}\\) は固有値 1 が重複するが固有ベクトルが 1 本しかなく対角化不可。対角化可否を判定する際は、代数的重複度と幾何的重複度の一致を確認する。",
+      "rationale": "対角化条件と反例を短く提示し、ジョルダン形との違いを補足する。",
+      "citations": [],
+      "retrievalLog": []
+    }
+  ]
+}
