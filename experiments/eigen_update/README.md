@@ -1,31 +1,92 @@
-# experiments/eigen_update スケルトン
+# experiments/eigen_update
 
-固有値ページ（`eigen_solve` / `eigen_property`）向けの新規更新機構を実験するためのスケルトンです。既存のコメント反映スクリプトや RAG チャットとは独立に動かします。
+固有値ページ（`eigen_solve` / `eigen_property`）向けに、コメントから更新パッチを生成する実験ディレクトリです。  
+汎用版（テンプレ型）と専門版（外部知識参照型）を比較できます。
 
-## ディレクトリ構成
-- `schema.ts` … コメント・パッチ・実行結果の型定義（参考）。
-- `comment_sets/seed_prompts.yaml` … カテゴリ別の生成プロンプト種（雛形）。
-- `comment_sets/generated/sample_comments.json` … 少量のサンプルコメント（固定シード想定）。
-- `engines/generic_template.ts` … 汎用版（専門知識なし）のテンプレ挿入ロジックのひな型（TS版）。
-- `engines/generic_template.py` … 汎用版テンプレ挿入の Python 版。
-- `engines/expert_update.py` … 専門版（DB参照型）の更新ロジック。
-- `knowledge/` … Web から取得した知識を保存し、DB化するための領域。
-- `knowledge/build_knowledge_embeddings.py` … Google AI Studio で埋め込みを作成。
-- `pipeline/run_generic.py` … JSON 入力 → パッチ出力の簡易パイプライン（Python）。
-- `pipeline/run_expert.py` … 知識 DB を参照したパッチ生成。
-- `outputs/generic/*.json` … 汎用版で生成したパッチ例。
+## 1. 主要ファイル（最小セット）
 
-## 使い方（現状の手動フロー）
-1. `comment_sets/generated/sample_comments.json` を編集して入力セットを決める（固定シードで増減可）。
-2. 汎用版: `engines/generic_template.py` を更新し、コメント→パッチの変換ルールを調整する。
-3. 専門版: `knowledge/urls.txt` に参照 URL を列挙し、`python experiments/eigen_update/knowledge/build_knowledge_pages.py` を実行して DB を作成する。
-4. 専門版: `python experiments/eigen_update/knowledge/build_knowledge_embeddings.py` を実行して埋め込みを作成する（`GOOGLE_API_KEY` が必要）。
-5. 汎用版: `python experiments/eigen_update/pipeline/run_generic.py` を実行して `outputs/generic/latest.json` を生成する。
-6. 専門版: `PYTHONPATH=. python experiments/eigen_update/pipeline/run_expert.py` を実行して `outputs/expert/latest.json` を生成する。
-6. 生成結果の例は `outputs/generic/sample_*.json` を参照。後続の適用やプレビューは別途 UI / スクリプトを実装予定。
+実行時に主に触るファイルだけを記載します。
 
-## TODO
-- Python パイプラインの拡張（入力/出力の引数化、エラーハンドリング強化）。
-- 専門版の抽出ロジック（引用抽出の精度改善、章別インデックス）。
-- 専門版（外部知識あり）の `expert_update.ts` と、軽量ベクトル検索のユーティリティを追加。
-- プレビュー UI を `app/experiments/eigen_update/Preview.tsx` として作成し、元コンテンツとの並列比較を可視化。
+### 入力
+
+- `comment_sets/generated/sample_comments.json`: 実験入力コメント
+- `knowledge/urls.txt`: 参照先 URL 一覧
+
+### パイプライン
+
+- `pipeline/run_generic.py`: 汎用版パッチ生成
+- `pipeline/run_expert.py`: 専門版（insert）パッチ生成
+- `pipeline/run_replace_expert.py`: 専門版（replace）パッチ生成
+
+### 知識 DB 生成
+
+- `knowledge/build_knowledge_pages.py`: ページ単位 DB を生成
+- `knowledge/build_knowledge_db.py`: チャンク単位 DB を生成
+- `knowledge/build_knowledge_embeddings.py`: 埋め込み DB を生成（`GOOGLE_API_KEY` 必須）
+
+### 出力
+
+- `outputs/generic/latest.json`
+- `outputs/expert/latest.json`
+- `outputs/expert/latest_replace.json`
+
+## 2. 前提条件
+
+- Python 3.10+
+- `.env.local` に `GOOGLE_API_KEY` を設定（専門版 + 埋め込み生成で必須）
+
+必要に応じて以下をインストールしてください。
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -U pip
+pip install python-dotenv certifi
+```
+
+## 3. 実行フロー
+
+### 3.1 入力コメントを準備
+
+`comment_sets/generated/sample_comments.json` を編集します。
+
+### 3.2 知識 DB を作成（専門版向け）
+
+```bash
+python experiments/eigen_update/knowledge/build_knowledge_pages.py
+python experiments/eigen_update/knowledge/build_knowledge_embeddings.py
+```
+
+`build_knowledge_db.py` を使うとチャンク型 DB も作成できます。
+
+### 3.3 パッチを生成
+
+```bash
+python experiments/eigen_update/pipeline/run_generic.py
+PYTHONPATH=. python experiments/eigen_update/pipeline/run_expert.py
+python experiments/eigen_update/pipeline/run_replace_expert.py
+```
+
+### 3.4 プレビュー確認
+
+Next.js 開発サーバー起動後、以下で比較できます。
+
+- `http://localhost:3000/experiments/eigen_update`
+
+## 4. 出力ファイル
+
+- 汎用版: `outputs/generic/latest.json`
+- 専門版（insert）: `outputs/expert/latest.json`
+- 専門版（replace）: `outputs/expert/latest_replace.json`
+
+## 5. よくあるエラー
+
+- `GOOGLE_API_KEY が設定されていません`:
+  `.env.local` を確認し、シェルを再起動してください。
+- `knowledge DB が見つかりません`:
+  `build_knowledge_pages.py` または `build_knowledge_db.py` を先に実行してください。
+
+## 6. 関連ドキュメント
+
+- 全体引き継ぎ: `../../docs/HANDOVER.md`
+- 知識 DB 作成補足: `knowledge/README.md`
